@@ -46,8 +46,7 @@ setup(
     license=LICENSE,
     
     # Correctly map the src directory
-    package_dir={'': 'src'},
-    packages=find_packages(where='src'),
+    packages=find_packages(),
     
     install_requires=INSTALL_REQUIRES,
     extras_require=EXTRAS_REQUIRE,

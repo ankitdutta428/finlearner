@@ -1,2 +1,3 @@
 dist
-finlearn.egg-info
+finlearner.egg-info
+.env

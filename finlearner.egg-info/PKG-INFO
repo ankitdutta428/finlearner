@@ -1,3 +1,50 @@
+Metadata-Version: 2.4
+Name: finlearner
+Version: 0.0.91
+Summary: A professional-grade financial analysis library featuring Deep Learning (LSTM, PINNs), Portfolio Optimization, and Advanced Technical Analysis. It is the final beta upgrade of finlearn.
+Home-page: https://github.com/ankitdutta428/finlearn
+Author: Ankit Dutta
+Author-email: ankitduttaiitkgp@gmail.com
+License: Apache 2.0
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Financial and Insurance Industry
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Topic :: Office/Business :: Financial :: Investment
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: yfinance
+Requires-Dist: plotly
+Requires-Dist: matplotlib
+Requires-Dist: seaborn
+Requires-Dist: scipy
+Requires-Dist: scikit-learn
+Requires-Dist: tensorflow
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: twine; extra == "dev"
+Requires-Dist: wheel; extra == "dev"
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: license
+Dynamic: license-file
+Dynamic: provides-extra
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
 [![CI/CD](https://github.com/ankitdutta428/finlearner/actions/workflows/ci_cd.yml/badge.svg)](https://github.com/ankitdutta428/finlearner/actions)
 [![PyPI version](https://badge.fury.io/py/finlearner.svg)](https://badge.fury.io/py/finlearner)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)

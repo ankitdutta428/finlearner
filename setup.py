@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 
 # Package metadata
-NAME = 'finlearn'
-DESCRIPTION = 'A professional-grade financial analysis library featuring Deep Learning (LSTM, PINNs), Portfolio Optimization, and Advanced Technical Analysis.'
+NAME = 'finlearner'
+DESCRIPTION = 'A professional-grade financial analysis library featuring Deep Learning (LSTM, PINNs), Portfolio Optimization, and Advanced Technical Analysis. It is the final beta upgrade of finlearn.'
 VERSION = '0.0.9'  # Bumped version for major upgrade
 AUTHOR = 'Ankit Dutta'
 AUTHOR_EMAIL = 'ankitduttaiitkgp@gmail.com'

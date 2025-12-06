@@ -1,6 +1,6 @@
 import pytest
 import numpy as np
-from finlearn.options import BlackScholesMerton
+from finlearner.options import BlackScholesMerton
 
 def test_call_price():
     # S=100, K=100, T=1, r=5%, sigma=20% -> Call Price should be ~10.45

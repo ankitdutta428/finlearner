@@ -1,7 +1,7 @@
 import pytest
 import tensorflow as tf
 import numpy as np
-from finlearn.pinn import BlackScholesPINN
+from finlearner.pinn import BlackScholesPINN
 
 def test_pinn_structure():
     model = BlackScholesPINN(r=0.05, sigma=0.2)

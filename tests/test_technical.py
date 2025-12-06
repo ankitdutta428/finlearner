@@ -1,7 +1,7 @@
 import pytest
 import pandas as pd
 import numpy as np
-from finlearn.technical import TechnicalIndicators
+from finlearner.technical import TechnicalIndicators
 
 @pytest.fixture
 def sample_data():

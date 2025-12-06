@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/release/python-380/)
 
-**FinLearn** is a comprehensive Python library for financial analysis, algorithmic trading research, and deep learning-based market prediction. It combines advanced technical analysis, modern portfolio theory, and state-of-the-art LSTM models into a single, production-ready API.
+**FinLearner** is a comprehensive Python library for financial analysis, algorithmic trading research, and deep learning-based market prediction. It combines advanced technical analysis, modern portfolio theory, and state-of-the-art LSTM models into a single, production-ready API.
 
 Whether you are a researcher, a quant developer, or a data scientist, FinLearn provides the robust tools needed to analyze markets and build predictive models.
 

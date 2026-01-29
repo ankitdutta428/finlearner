@@ -5,8 +5,8 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/ankitdutta428/finlearner/actions/workflows/ci_cd.yml">
-    <img src="https://github.com/ankitdutta428/finlearner/actions/workflows/ci_cd.yml/badge.svg" alt="CI/CD">
+  <a href="https://github.com/ankitdutta428/finlearner/actions/workflows/tests.yml">
+    <img src="https://github.com/ankitdutta428/finlearner/actions/workflows/tests.yml/badge.svg" alt="Tests">
   </a>
   <a href="https://pypi.org/project/finlearner/">
     <img src="https://img.shields.io/pypi/v/finlearner.svg?color=blue" alt="PyPI version">

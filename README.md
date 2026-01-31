@@ -57,7 +57,7 @@
 
 | Date | News |
 |------|------|
-| **2025-12** | 🎉 v0.0.91 released with Physics-Informed Neural Networks (PINN) for options pricing |
+| **2026-02** | 🚀 **v0.1.0 Major Release**: Full module suite (Portfolio, Risk, Options, ML), stable API, and CLI demos |
 | **2025-12** | 📊 Added Ichimoku Cloud and advanced technical indicators |
 | **2025-12** | 🚀 FinLearner is now available on PyPI! |
 

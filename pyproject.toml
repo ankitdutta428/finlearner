@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "finlearner"
-version = "0.0.92"
+version = "0.1.0"
 description = "State-of-the-art Financial Analysis & Deep Learning Library"
 readme = "README.md"
 license = {text = "Apache-2.0"}

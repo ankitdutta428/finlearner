@@ -23,4 +23,14 @@ class DataLoader:
         data = yf.download(ticker, start=start, end=end, progress=False)
         if data.empty:
             raise ValueError(f"No data found for {ticker}. Check ticker symbol or date range.")
+        
+        # Flatten multi-level columns (yfinance returns MultiIndex for single tickers)
+        if isinstance(data.columns, pd.MultiIndex):
+            # For single ticker, take the first level only
+            if isinstance(ticker, str):
+                data.columns = data.columns.get_level_values(0)
+            else:
+                # For multiple tickers, keep as-is or flatten appropriately
+                pass
+        
         return data

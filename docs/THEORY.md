@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ankitdutta428/finlearner/main/docs/assets/logo.png" alt="FinLearner Logo" width="300">
+  <img src="assets/mainlogo.svg" alt="FinLearner Logo" width="300">
 </p>
 
 <h1 align="center">FinLearner: Theoretical Foundations</h1>

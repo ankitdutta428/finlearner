@@ -20,7 +20,12 @@ class PortfolioOptimizer:
     """
     def __init__(self, tickers: list, start: str, end: str):
         import yfinance as yf
-        self.data = yf.download(tickers, start=start, end=end)['Adj Close']
+        data = yf.download(tickers, start=start, end=end)
+        # Handle newer yfinance MultiIndex columns
+        if isinstance(data.columns, pd.MultiIndex):
+            self.data = data['Close']
+        else:
+            self.data = data['Close'] if 'Close' in data.columns else data['Adj Close']
         self.returns = self.data.pct_change()
         self.tickers = tickers
         
@@ -93,7 +98,12 @@ class BlackLittermanOptimizer:
         self.risk_free_rate = risk_free_rate
         
         # Download data
-        self.data = yf.download(tickers, start=start, end=end)['Adj Close']
+        data = yf.download(tickers, start=start, end=end)
+        # Handle newer yfinance MultiIndex columns
+        if isinstance(data.columns, pd.MultiIndex):
+            self.data = data['Close']
+        else:
+            self.data = data['Close'] if 'Close' in data.columns else data['Adj Close']
         self.returns = self.data.pct_change().dropna()
         
         # Calculate covariance matrix (annualized)
@@ -261,7 +271,12 @@ class RiskParityOptimizer:
         import yfinance as yf
         
         self.tickers = tickers
-        self.data = yf.download(tickers, start=start, end=end)['Adj Close']
+        data = yf.download(tickers, start=start, end=end)
+        # Handle newer yfinance MultiIndex columns
+        if isinstance(data.columns, pd.MultiIndex):
+            self.data = data['Close']
+        else:
+            self.data = data['Close'] if 'Close' in data.columns else data['Adj Close']
         self.returns = self.data.pct_change().dropna()
         self.cov_matrix = self.returns.cov() * 252  # Annualized
     

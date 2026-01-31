@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/mainlogo.svg" alt="FinLearner Logo" width="400">
+  <img src="https://raw.githubusercontent.com/ankitdutta428/finlearner/main/docs/assets/mainlogo.svg" alt="FinLearner Logo" width="400">
   <br>
   <em>State-of-the-art Financial Analysis & Deep Learning Library</em>
 </p>

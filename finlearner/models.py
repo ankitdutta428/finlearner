@@ -52,7 +52,7 @@ class TimeSeriesPredictor:
         Predicts future prices based on the trained model.
         """
         dataset = df[['Close']].values
-        inputs = dataset[len(dataset) - len(dataset) - self.lookback_days:]
+        inputs = dataset
         inputs = inputs.reshape(-1, 1)
         inputs = self.scaler.transform(inputs)
 
@@ -113,7 +113,7 @@ class GRUPredictor:
     def predict(self, df: pd.DataFrame) -> np.ndarray:
         """Predicts future prices using the trained GRU model."""
         dataset = df[['Close']].values
-        inputs = dataset[len(dataset) - len(dataset) - self.lookback_days:]
+        inputs = dataset
         inputs = inputs.reshape(-1, 1)
         inputs = self.scaler.transform(inputs)
 
@@ -184,7 +184,7 @@ class CNNLSTMPredictor:
     def predict(self, df: pd.DataFrame) -> np.ndarray:
         """Predicts using the CNN-LSTM hybrid model."""
         dataset = df[['Close']].values
-        inputs = dataset[len(dataset) - len(dataset) - self.lookback_days:]
+        inputs = dataset
         inputs = inputs.reshape(-1, 1)
         inputs = self.scaler.transform(inputs)
 
@@ -282,7 +282,7 @@ class TransformerPredictor:
     def predict(self, df: pd.DataFrame) -> np.ndarray:
         """Predicts using the Transformer model."""
         dataset = df[['Close']].values
-        inputs = dataset[len(dataset) - len(dataset) - self.lookback_days:]
+        inputs = dataset
         inputs = inputs.reshape(-1, 1)
         inputs = self.scaler.transform(inputs)
 
@@ -374,7 +374,7 @@ class EnsemblePredictor:
     def predict(self, df: pd.DataFrame) -> np.ndarray:
         """Generates weighted ensemble predictions."""
         dataset = df[['Close']].values
-        inputs = dataset[len(dataset) - len(dataset) - self.lookback_days:]
+        inputs = dataset
         inputs = inputs.reshape(-1, 1)
         inputs = self.scaler.transform(inputs)
 

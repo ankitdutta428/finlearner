@@ -57,7 +57,8 @@
 
 | Date | News |
 |------|------|
-| **2026-02** | 🚀 **v0.1.0 Major Release**: Full module suite (Portfolio, Risk, Options, ML), stable API, and CLI demos |
+| **2026-02** | 02/2026 | v0.1.1 Patch Release | Critical fix for Deep Learning models and updated demos |
+| 02/2026 | v0.1.0 Major Release | Full suite: Portfolio, Risk, Options, ML/DL models |API, and CLI demos |
 | **2025-12** | 📊 Added Ichimoku Cloud and advanced technical indicators |
 | **2025-12** | 🚀 FinLearner is now available on PyPI! |
 

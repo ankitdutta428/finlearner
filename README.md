@@ -28,6 +28,7 @@
 <h3 align="center">
   <a href="#-installation">Installation</a> |
   <a href="#-quick-start">Quick Start</a> |
+  <a href="./docs/THEORY.md">📖 Theory</a> |
   <a href="https://finlearner.readthedocs.io">Documentation</a> |
   <a href="#-contributing">Contributing</a>
 </h3>
@@ -38,12 +39,15 @@
 
 **FinLearner** is a comprehensive Python library designed for quantitative researchers, algorithmic traders, and data scientists. It provides production-ready tools for:
 
-- 📈 **Deep Learning Forecasting** — LSTM/GRU models optimized for time-series prediction
-- 💼 **Portfolio Optimization** — Markowitz Mean-Variance with Monte Carlo simulation
+- 📈 **Deep Learning Forecasting** — LSTM, GRU, Transformer, CNN-LSTM, Ensemble models
+- 💼 **Portfolio Optimization** — Markowitz, Black-Litterman, Risk Parity
 - 📊 **Technical Analysis** — 20+ indicators including RSI, MACD, Bollinger Bands, Ichimoku Cloud
 - 🎯 **Options Pricing** — Black-Scholes-Merton model with Greeks calculation
 - 🧠 **Physics-Informed Neural Networks** — PINN for solving Black-Scholes PDE
-- 📉 **Interactive Visualization** — Beautiful Plotly-powered financial charts
+- 📉 **Risk Metrics** — VaR (Historical, Parametric, Monte Carlo), CVaR, Max Drawdown
+- 🔍 **Anomaly Detection** — VAE for price pattern anomalies
+- 🤖 **Gradient Boosting** — XGBoost/LightGBM with auto feature engineering
+- 📊 **Interactive Visualization** — Beautiful Plotly-powered financial charts
 
 > **Philosophy**: One library. All the tools you need. From data fetching to model deployment.
 
@@ -222,7 +226,16 @@ graph TB
 |--------|-------|-------------|
 | `finlearner.data` | `DataLoader` | Unified data fetching wrapper for Yahoo Finance |
 | `finlearner.models` | `TimeSeriesPredictor` | LSTM-based time series forecasting |
+| `finlearner.models` | `GRUPredictor` | GRU-based predictor (faster than LSTM) |
+| `finlearner.models` | `CNNLSTMPredictor` | CNN-LSTM hybrid for pattern extraction |
+| `finlearner.models` | `TransformerPredictor` | Transformer with self-attention |
+| `finlearner.models` | `EnsemblePredictor` | LSTM + GRU + Attention ensemble |
+| `finlearner.ml_models` | `GradientBoostPredictor` | XGBoost/LightGBM for tabular data |
+| `finlearner.anomaly` | `VAEAnomalyDetector` | VAE for price anomaly detection |
+| `finlearner.risk` | `RiskMetrics` | VaR, CVaR, Max Drawdown calculations |
 | `finlearner.portfolio` | `PortfolioOptimizer` | Markowitz Mean-Variance optimization |
+| `finlearner.portfolio` | `BlackLittermanOptimizer` | Black-Litterman with investor views |
+| `finlearner.portfolio` | `RiskParityOptimizer` | Equal risk contribution portfolio |
 | `finlearner.technical` | `TechnicalIndicators` | 20+ technical analysis indicators |
 | `finlearner.options` | `BlackScholesMerton` | European option pricing with Greeks |
 | `finlearner.pinn` | `BlackScholesPINN` | Physics-Informed Neural Network for Black-Scholes |
@@ -300,9 +313,12 @@ pytest tests/ -v
 
 ## 🗺️ Roadmap
 
+- [x] **Risk metrics** — VaR (Historical, Parametric, Monte Carlo), CVaR, Maximum Drawdown ✅
+- [x] **Transformer-based forecasting** — TransformerPredictor with self-attention ✅
+- [x] **Advanced ML models** — GRU, CNN-LSTM, Ensemble, XGBoost/LightGBM ✅
+- [x] **Anomaly detection** — VAE for price pattern anomalies ✅
+- [x] **Advanced portfolio optimization** — Black-Litterman, Risk Parity ✅
 - [ ] Backtesting engine for strategy testing
-- [ ] Risk metrics (VaR, CVaR, Maximum Drawdown)
-- [ ] Transformer-based forecasting models
 - [ ] Sentiment analysis integration
 - [ ] Additional data sources (Alpha Vantage, Polygon.io)
 - [ ] CLI interface for quick analysis

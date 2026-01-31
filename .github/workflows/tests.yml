@@ -30,6 +30,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install -e .
         pip install pytest pytest-cov
+        # Install ML/DL dependencies for tests
+        pip install tensorflow xgboost lightgbm
         
     - name: Run Tests with Coverage
       run: |

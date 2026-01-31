@@ -16,9 +16,9 @@ class TestPortfolioOptimizer:
         """Test that initialization downloads and processes data."""
         # Create multi-level columns like yfinance returns
         mock_data = pd.DataFrame({
-            ('Adj Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
-            ('Adj Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
-            ('Adj Close', 'MSFT'): sample_multi_ticker_data['MSFT'],
+            ('Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
+            ('Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
+            ('Close', 'MSFT'): sample_multi_ticker_data['MSFT'],
         }, index=sample_multi_ticker_data.index)
         mock_download.return_value = mock_data
         
@@ -36,9 +36,9 @@ class TestPortfolioOptimizer:
     def test_optimize_returns_correct_structure(self, mock_download, sample_multi_ticker_data):
         """Test that optimize() returns results, allocation, and metrics."""
         mock_data = pd.DataFrame({
-            ('Adj Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
-            ('Adj Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
-            ('Adj Close', 'MSFT'): sample_multi_ticker_data['MSFT'],
+            ('Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
+            ('Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
+            ('Close', 'MSFT'): sample_multi_ticker_data['MSFT'],
         }, index=sample_multi_ticker_data.index)
         mock_download.return_value = mock_data
         
@@ -65,9 +65,9 @@ class TestPortfolioOptimizer:
     def test_optimize_weights_sum_to_one(self, mock_download, sample_multi_ticker_data):
         """Test that portfolio weights sum to 1."""
         mock_data = pd.DataFrame({
-            ('Adj Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
-            ('Adj Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
-            ('Adj Close', 'MSFT'): sample_multi_ticker_data['MSFT'],
+            ('Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
+            ('Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
+            ('Close', 'MSFT'): sample_multi_ticker_data['MSFT'],
         }, index=sample_multi_ticker_data.index)
         mock_download.return_value = mock_data
         
@@ -87,9 +87,9 @@ class TestPortfolioOptimizer:
     def test_optimize_sharpe_ratio_calculated(self, mock_download, sample_multi_ticker_data):
         """Test that Sharpe ratio is correctly calculated."""
         mock_data = pd.DataFrame({
-            ('Adj Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
-            ('Adj Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
-            ('Adj Close', 'MSFT'): sample_multi_ticker_data['MSFT'],
+            ('Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
+            ('Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
+            ('Close', 'MSFT'): sample_multi_ticker_data['MSFT'],
         }, index=sample_multi_ticker_data.index)
         mock_download.return_value = mock_data
         
@@ -111,9 +111,9 @@ class TestPortfolioOptimizer:
     def test_optimize_finds_max_sharpe(self, mock_download, sample_multi_ticker_data):
         """Test that the allocation corresponds to max Sharpe ratio portfolio."""
         mock_data = pd.DataFrame({
-            ('Adj Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
-            ('Adj Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
-            ('Adj Close', 'MSFT'): sample_multi_ticker_data['MSFT'],
+            ('Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
+            ('Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
+            ('Close', 'MSFT'): sample_multi_ticker_data['MSFT'],
         }, index=sample_multi_ticker_data.index)
         mock_download.return_value = mock_data
         
@@ -138,9 +138,9 @@ class TestBlackLittermanOptimizer:
     def test_init_downloads_data(self, mock_download, sample_multi_ticker_data):
         """Test initialization downloads data correctly."""
         mock_data = pd.DataFrame({
-            ('Adj Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
-            ('Adj Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
-            ('Adj Close', 'MSFT'): sample_multi_ticker_data['MSFT'],
+            ('Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
+            ('Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
+            ('Close', 'MSFT'): sample_multi_ticker_data['MSFT'],
         }, index=sample_multi_ticker_data.index)
         mock_download.return_value = mock_data
         
@@ -158,8 +158,8 @@ class TestBlackLittermanOptimizer:
     def test_init_has_delta(self, mock_download, sample_multi_ticker_data):
         """Test that risk aversion delta is calculated."""
         mock_data = pd.DataFrame({
-            ('Adj Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
-            ('Adj Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
+            ('Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
+            ('Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
         }, index=sample_multi_ticker_data.index)
         mock_download.return_value = mock_data
         
@@ -177,8 +177,8 @@ class TestBlackLittermanOptimizer:
     def test_equilibrium_returns(self, mock_download, sample_multi_ticker_data):
         """Test that equilibrium returns are calculated correctly."""
         mock_data = pd.DataFrame({
-            ('Adj Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
-            ('Adj Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
+            ('Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
+            ('Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
         }, index=sample_multi_ticker_data.index)
         mock_download.return_value = mock_data
         
@@ -196,8 +196,8 @@ class TestBlackLittermanOptimizer:
     def test_optimize_without_views(self, mock_download, sample_multi_ticker_data):
         """Test optimization without views returns equilibrium weights."""
         mock_data = pd.DataFrame({
-            ('Adj Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
-            ('Adj Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
+            ('Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
+            ('Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
         }, index=sample_multi_ticker_data.index)
         mock_download.return_value = mock_data
         
@@ -217,8 +217,8 @@ class TestBlackLittermanOptimizer:
     def test_optimize_with_views(self, mock_download, sample_multi_ticker_data):
         """Test optimization with investor views."""
         mock_data = pd.DataFrame({
-            ('Adj Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
-            ('Adj Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
+            ('Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
+            ('Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
         }, index=sample_multi_ticker_data.index)
         mock_download.return_value = mock_data
         
@@ -240,8 +240,8 @@ class TestBlackLittermanOptimizer:
     def test_optimize_returns_metrics(self, mock_download, sample_multi_ticker_data):
         """Test that optimize returns proper metrics tuple."""
         mock_data = pd.DataFrame({
-            ('Adj Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
-            ('Adj Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
+            ('Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
+            ('Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
         }, index=sample_multi_ticker_data.index)
         mock_download.return_value = mock_data
         
@@ -265,9 +265,9 @@ class TestRiskParityOptimizer:
     def test_init_downloads_data(self, mock_download, sample_multi_ticker_data):
         """Test initialization downloads data correctly."""
         mock_data = pd.DataFrame({
-            ('Adj Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
-            ('Adj Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
-            ('Adj Close', 'MSFT'): sample_multi_ticker_data['MSFT'],
+            ('Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
+            ('Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
+            ('Close', 'MSFT'): sample_multi_ticker_data['MSFT'],
         }, index=sample_multi_ticker_data.index)
         mock_download.return_value = mock_data
         
@@ -284,9 +284,9 @@ class TestRiskParityOptimizer:
     def test_optimize_weights_sum_to_one(self, mock_download, sample_multi_ticker_data):
         """Test that optimized weights sum to 1."""
         mock_data = pd.DataFrame({
-            ('Adj Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
-            ('Adj Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
-            ('Adj Close', 'MSFT'): sample_multi_ticker_data['MSFT'],
+            ('Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
+            ('Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
+            ('Close', 'MSFT'): sample_multi_ticker_data['MSFT'],
         }, index=sample_multi_ticker_data.index)
         mock_download.return_value = mock_data
         
@@ -304,9 +304,9 @@ class TestRiskParityOptimizer:
     def test_optimize_all_weights_positive(self, mock_download, sample_multi_ticker_data):
         """Test that all weights are non-negative."""
         mock_data = pd.DataFrame({
-            ('Adj Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
-            ('Adj Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
-            ('Adj Close', 'MSFT'): sample_multi_ticker_data['MSFT'],
+            ('Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
+            ('Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
+            ('Close', 'MSFT'): sample_multi_ticker_data['MSFT'],
         }, index=sample_multi_ticker_data.index)
         mock_download.return_value = mock_data
         
@@ -324,8 +324,8 @@ class TestRiskParityOptimizer:
     def test_optimize_returns_metrics(self, mock_download, sample_multi_ticker_data):
         """Test that optimize returns risk contribution metrics."""
         mock_data = pd.DataFrame({
-            ('Adj Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
-            ('Adj Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
+            ('Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
+            ('Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
         }, index=sample_multi_ticker_data.index)
         mock_download.return_value = mock_data
         
@@ -345,9 +345,9 @@ class TestRiskParityOptimizer:
     def test_risk_contributions_approximately_equal(self, mock_download, sample_multi_ticker_data):
         """Test that risk parity achieves roughly equal risk contributions."""
         mock_data = pd.DataFrame({
-            ('Adj Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
-            ('Adj Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
-            ('Adj Close', 'MSFT'): sample_multi_ticker_data['MSFT'],
+            ('Close', 'AAPL'): sample_multi_ticker_data['AAPL'],
+            ('Close', 'GOOG'): sample_multi_ticker_data['GOOG'],
+            ('Close', 'MSFT'): sample_multi_ticker_data['MSFT'],
         }, index=sample_multi_ticker_data.index)
         mock_download.return_value = mock_data
         

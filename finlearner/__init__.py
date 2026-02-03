@@ -14,6 +14,9 @@ Provides:
 # Data
 from .data import DataLoader
 
+# Backtest
+from .backtest import BacktestEngine, BacktestResult
+
 # Technical Analysis
 from .technical import TechnicalIndicators
 
@@ -55,6 +58,13 @@ from .plotting import Plotter
 # Utilities
 from .utils import check_val
 
+# Options
+from .options import (
+    BlackScholesMerton,
+    BinomialTreePricing,
+    MonteCarloPricing
+)
+
 # Version
 __version__ = '0.1.1'
 
@@ -88,4 +98,11 @@ __all__ = [
     'Plotter',
     # Utils
     'check_val',
+    # Options
+    'BlackScholesMerton',
+    'BinomialTreePricing',
+    'MonteCarloPricing',
+    # Backtest
+    'BacktestEngine',
+    'BacktestResult',
 ]

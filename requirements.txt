@@ -21,3 +21,8 @@ seaborn>=0.11.0
 
 # Testing
 pytest>=7.0.0
+
+# Hugging Face & PyTorch (for Advanced Models)
+torch>=2.0.0
+transformers>=4.30.0
+accelerate>=0.20.0

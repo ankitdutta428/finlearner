@@ -20,6 +20,7 @@ env/
 .vscode/
 *.swp
 *.swo
+PAPER_OUTLINE.md
 
 # Testing
 .pytest_cache/

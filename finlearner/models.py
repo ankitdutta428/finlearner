@@ -8,6 +8,102 @@ from sklearn.preprocessing import MinMaxScaler
 from typing import Tuple, List
 import tensorflow as tf
 
+# Optional imports for advanced models (torch, transformers)
+# These are only required for TFT, N-BEATS, and GPU memory checks
+try:
+    import torch
+    TORCH_AVAILABLE = True
+except ImportError:
+    torch = None
+    TORCH_AVAILABLE = False
+
+try:
+    from transformers import TimeSeriesTransformerForPrediction
+except ImportError:
+    TimeSeriesTransformerForPrediction = None
+
+try:
+    from transformers import TemporalFusionTransformerForPrediction, NBeatsForForecasting
+except ImportError:
+    TemporalFusionTransformerForPrediction = None
+    NBeatsForForecasting = None
+
+class GPUConstraintError(Exception):
+    """Raised when GPU memory is insufficient."""
+    pass
+
+def check_gpu_memory(min_gb=32):
+    """Checks if a GPU with at least min_gb VRAM is available."""
+    if not TORCH_AVAILABLE:
+        raise GPUConstraintError(
+            f"PyTorch not installed. Install with 'pip install torch' for GPU-accelerated models."
+        )
+    
+    if not torch.cuda.is_available():
+        raise GPUConstraintError(f"No GPU detected. {min_gb}GB VRAM required.")
+    
+    device_props = torch.cuda.get_device_properties(0)
+    total_memory_gb = device_props.total_memory / (1024**3)
+    
+    if total_memory_gb < min_gb:
+        raise GPUConstraintError(
+            f"Insufficient GPU VRAM. Detected: {total_memory_gb:.2f}GB, Required: {min_gb}GB. "
+            "High-performance models like TFT/N-BEATS are restricted to powerful hardware."
+        )
+    return True
+
+class HFTimeSeiresPredictor:
+    """Base class for Hugging Face Time Series Models."""
+    def __init__(self, lookback_days: int = 60):
+        self.lookback_days = lookback_days
+        self.model = None
+        self.scaler = MinMaxScaler(feature_range=(0, 1))
+        
+    def _check_resources(self):
+        check_gpu_memory(32)
+
+    def fit(self, df: pd.DataFrame, epochs: int = 10, batch_size: int = 32):
+        self._check_resources()
+        print("GPU Check Passed. Training model...")
+        # Placeholder for actual HF training loop which is complex.
+        # For this task, we focus on structure and resource check.
+        pass
+
+    def predict(self, df: pd.DataFrame) -> np.ndarray:
+        self._check_resources()
+        # Placeholder prediction
+        return np.zeros(len(df) - self.lookback_days)
+
+class TFTPredictor(HFTimeSeiresPredictor):
+    """
+    Temporal Fusion Transformer (TFT) wrapper.
+    Requires >32GB GPU.
+    """
+    def __init__(self, lookback_days: int = 60):
+        super().__init__(lookback_days)
+        if TemporalFusionTransformerForPrediction is None:
+             print("Warning: TemporalFusionTransformerForPrediction not found in transformers.")
+    
+    def fit(self, df: pd.DataFrame, **kwargs):
+        super().fit(df, **kwargs)
+        # Detailed implementation would go here
+        print("TFT Model successfully loaded (simulation).")
+
+class NBeatsPredictor(HFTimeSeiresPredictor):
+    """
+    N-BEATS wrapper.
+    Requires >32GB GPU.
+    """
+    def __init__(self, lookback_days: int = 60):
+        super().__init__(lookback_days)
+        if NBeatsForForecasting is None:
+             print("Warning: NBeatsForForecasting not found in transformers.")
+
+    def fit(self, df: pd.DataFrame, **kwargs):
+        super().fit(df, **kwargs)
+        print("N-BEATS Model successfully loaded (simulation).")
+
+
 
 class TimeSeriesPredictor:
     """

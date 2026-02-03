@@ -9,10 +9,10 @@ description = "State-of-the-art Financial Analysis & Deep Learning Library"
 readme = "README.md"
 license = {text = "Apache-2.0"}
 authors = [
-    {name = "Ankit Dutta", email = "ankitdutta428@gmail.com"}
+    {name = "Ankit Dutta", email = "ankitduttaiitkgp@gmail.com"}
 ]
 maintainers = [
-    {name = "Ankit Dutta", email = "ankitdutta428@gmail.com"}
+    {name = "Ankit Dutta", email = "ankitduttaiitkgp@gmail.com"}
 ]
 keywords = [
     "finance",

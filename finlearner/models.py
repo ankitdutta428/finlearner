@@ -7,19 +7,24 @@ from keras.layers import (LSTM, GRU, Dense, Dropout, Conv1D, MaxPooling1D,
 from sklearn.preprocessing import MinMaxScaler
 from typing import Tuple, List
 import tensorflow as tf
-import torch
-from transformers import (
-    TimeSeriesTransformerForPrediction, 
-    # NBeatsForForecasting is available in newer transformers versions, checking availability dynamically or assuming standard
-)
-# Note: Specific imports might need adjustment based on installed transformers version. 
-# We will use a generic try-except block in class instantiation or specific imports if confident.
-# For now, let's assume we can map manual architecture or use generic classes if specific ones aren't exposed directly at top level.
-# Actually, let's use the 'AutoModel' approach or specific classes if we are sure.
+
+# Optional imports for advanced models (torch, transformers)
+# These are only required for TFT, N-BEATS, and GPU memory checks
+try:
+    import torch
+    TORCH_AVAILABLE = True
+except ImportError:
+    torch = None
+    TORCH_AVAILABLE = False
+
+try:
+    from transformers import TimeSeriesTransformerForPrediction
+except ImportError:
+    TimeSeriesTransformerForPrediction = None
+
 try:
     from transformers import TemporalFusionTransformerForPrediction, NBeatsForForecasting
 except ImportError:
-    # Fallback or placeholder if library version is old, though requirements specify new version.
     TemporalFusionTransformerForPrediction = None
     NBeatsForForecasting = None
 
@@ -29,6 +34,11 @@ class GPUConstraintError(Exception):
 
 def check_gpu_memory(min_gb=32):
     """Checks if a GPU with at least min_gb VRAM is available."""
+    if not TORCH_AVAILABLE:
+        raise GPUConstraintError(
+            f"PyTorch not installed. Install with 'pip install torch' for GPU-accelerated models."
+        )
+    
     if not torch.cuda.is_available():
         raise GPUConstraintError(f"No GPU detected. {min_gb}GB VRAM required.")
     
